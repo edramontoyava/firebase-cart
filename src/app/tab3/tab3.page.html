@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Historial
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="historial" *ngFor="let item of cart | async; index as i">
+    
+    <ion-label>Compra {{i+1}}</ion-label>
+    <ion-list>
+      <ion-item *ngFor="let products of item.items">
+        <ion-thumbnail slot="start">
+          <img [src]="products.product.photo" alt="{{ products.product.name }}">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ products.product.name }}</h2>
+          <p>{{ products.product.description }}</p>
+          <p>Precio: ${{ products.product.price }}</p>
+          <p>Cantidad: {{ products.quantity }}</p>
+        </ion-label>
+      </ion-item>
+      <label>Total: ${{item.total}}</label>
+    </ion-list>
+    <hr>
+    <hr>
+  </div>
+</ion-content>
